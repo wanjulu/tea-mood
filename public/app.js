@@ -1,5 +1,19 @@
 import { TEAS } from './teas.js';
+import { initLogTab } from './log.js';
 
+// ── Tab switching ─────────────────────────────────────────────────────────────
+document.querySelectorAll('.tab-btn').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    const target = btn.dataset.tab;
+    document.querySelectorAll('.tab-btn').forEach((b) => b.classList.toggle('active', b === btn));
+    document.querySelectorAll('.tab-panel').forEach((p) => {
+      p.hidden = p.id !== `tab-${target}`;
+    });
+    if (target === 'log') initLogTab();
+  });
+});
+
+// ── Tea recommendation ────────────────────────────────────────────────────────
 const moodInput    = document.getElementById('moodInput');
 const charCount    = document.getElementById('charCount');
 const brewBtn      = document.getElementById('brewBtn');

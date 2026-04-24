@@ -21,36 +21,123 @@
       <p class="tagline">說說你的心情，讓茶來陪你</p>
     </header>
 
-    <section class="input-section" id="inputSection">
-      <div class="mood-card">
-        <label class="mood-label" for="moodInput">此刻的你，感覺如何？</label>
-        <textarea
-          id="moodInput"
-          class="mood-input"
-          placeholder="有點疲憊，但還好…&#10;今天工作壓力很大&#10;心情平靜，想一個人靜靜…"
-          rows="4"
-          maxlength="300"
-        ></textarea>
-        <div class="input-footer">
-          <span class="char-count"><span id="charCount">0</span> / 300</span>
-          <button class="brew-btn" id="brewBtn">
-            <span class="btn-text">為我選茶</span>
-            <span class="btn-icon">→</span>
-          </button>
+    <!-- Tab Nav -->
+    <nav class="tab-nav">
+      <button class="tab-btn active" data-tab="recommend">選茶推薦</button>
+      <button class="tab-btn" data-tab="log">喝茶記錄</button>
+    </nav>
+
+    <!-- ── Tab: 選茶推薦 ── -->
+    <div class="tab-panel" id="tab-recommend">
+      <section class="input-section" id="inputSection">
+        <div class="mood-card">
+          <label class="mood-label" for="moodInput">此刻的你，感覺如何？</label>
+          <textarea
+            id="moodInput"
+            class="mood-input"
+            placeholder="有點疲憊，但還好…&#10;今天工作壓力很大&#10;心情平靜，想一個人靜靜…"
+            rows="4"
+            maxlength="300"
+          ></textarea>
+          <div class="input-footer">
+            <span class="char-count"><span id="charCount">0</span> / 300</span>
+            <button class="brew-btn" id="brewBtn">
+              <span class="btn-text">為我選茶</span>
+              <span class="btn-icon">→</span>
+            </button>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="result-section" id="resultSection" hidden>
-      <div class="result-header">
-        <button class="back-btn" id="backBtn">← 重新輸入</button>
-        <p class="result-subtitle" id="resultSubtitle"></p>
-      </div>
-      <div class="tea-cards" id="teaCards"></div>
-    </section>
+      <section class="result-section" id="resultSection" hidden>
+        <div class="result-header">
+          <button class="back-btn" id="backBtn">← 重新輸入</button>
+          <p class="result-subtitle" id="resultSubtitle"></p>
+        </div>
+        <div class="tea-cards" id="teaCards"></div>
+      </section>
+    </div>
 
+    <!-- ── Tab: 喝茶記錄 ── -->
+    <div class="tab-panel" id="tab-log" hidden>
+
+      <!-- Log Form -->
+      <section class="log-form-section">
+        <div class="mood-card">
+          <div class="form-title">記錄這杯茶</div>
+
+          <div class="weather-badge" id="weatherBadge">
+            <span class="weather-icon">⋯</span>
+            <span class="weather-text" id="weatherText">正在取得天氣…</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="logTea">茶款</label>
+            <input
+              id="logTea"
+              class="form-input"
+              type="text"
+              placeholder="龍井、普洱熟茶…"
+              list="teaList"
+              autocomplete="off"
+            />
+            <datalist id="teaList"></datalist>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="logMood">心情</label>
+            <input
+              id="logMood"
+              class="form-input"
+              type="text"
+              placeholder="疲憊但平靜、很放鬆…"
+              maxlength="100"
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">評分</label>
+            <div class="star-rating" id="starRating">
+              <button class="star" data-value="1">★</button>
+              <button class="star" data-value="2">★</button>
+              <button class="star" data-value="3">★</button>
+              <button class="star" data-value="4">★</button>
+              <button class="star" data-value="5">★</button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="logNotes">備註 <span class="optional">（可選）</span></label>
+            <textarea
+              id="logNotes"
+              class="form-input form-textarea"
+              placeholder="今天用了蓋碗，第三泡最好喝…"
+              rows="2"
+              maxlength="300"
+            ></textarea>
+          </div>
+
+          <div class="form-footer">
+            <span class="save-msg" id="saveMsg"></span>
+            <button class="brew-btn" id="saveBtn">儲存記錄</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Records List -->
+      <section class="records-section">
+        <div class="records-header">
+          <span class="records-title">過去的茶</span>
+          <span class="records-count" id="recordsCount"></span>
+        </div>
+        <div class="records-list" id="recordsList">
+          <div class="records-empty">還沒有記錄，去泡第一杯吧</div>
+        </div>
+      </section>
+    </div>
   </main>
 
   <script type="module" src="app.js"></script>
+  <script type="module" src="log.js"></script>
 </body>
 </html>

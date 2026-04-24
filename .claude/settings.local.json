@@ -7,7 +7,11 @@
       "Bash(code *)",
       "Bash(open *)",
       "Bash(gh auth *)",
-      "Bash(git -C /Users/luwanju/tea-mood status)"
+      "Bash(git -C /Users/luwanju/tea-mood status)",
+      "Bash(pkill -f \"node server.js\")",
+      "Bash(curl -s http://localhost:3000/api/weather)",
+      "Bash(curl -s -X POST http://localhost:3000/api/logs -H 'Content-Type: application/json' -d '{\"tea_name\":\"龍井\",\"mood\":\"有點累但很放鬆\",\"rating\":4,\"notes\":\"第三泡最香\"}')",
+      "Bash(python3 -m json.tool)"
     ]
   }
 }
